@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+## Author: Peter Nadrah
+## License: GNU GPL v3
+## Description: Part of WLIC - simple GUI program for collecting spectra from
+##              spectrometer.
+
 import seabreeze
 from seabreeze.spectrometers import list_devices, Spectrometer
 import numpy as np

@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+## Author: Peter Nadrah
+## License: GNU GPL v3
+## Description: Part of WLIC - simple GUI program for collecting spectra from
+##              spectrometer.
+
 ## 0.1, 13.01.2023
 ##   First version, based on gui for fluorescence measurement.
 ## 0.2, 13.01.2023
@@ -18,7 +26,7 @@ from matplotlib.backends.backend_tkagg import (
 )
 from read_files import *
 from spcomm import *
-from irradiance import *
+#from irradiance import *
 import numpy as np
 
 # default values
@@ -51,7 +59,7 @@ def setupWindow():
     padx=2,
     pady=2,
   )
-  app['settingsFrame'].grid(column=0, row=0)
+  app['settingsFrame'].grid(column=0, row=0, sticky=tk.W+tk.E+tk.N)
   
   app['viewFrame'] = tk.Frame(app['mainFrame'])
   app['viewFrame'].grid(column=1, row=0)
@@ -60,7 +68,7 @@ def setupWindow():
   app['figureFrame'].grid(column=0, row=0)
 
   app['window'].geometry('900x700+300+0')
-  app['window'].title('measure spectrum')
+  app['window'].title('WLIC')
   app['window'].config(bg='#FFFFFF')
   app['window'].resizable(width=True, height=True)
   
@@ -104,7 +112,7 @@ def setupWindow():
     padx=2,
     pady=2
   )
-  spectrometerSettingsFrame.grid(column=0, row=1, sticky=tk.W+tk.E)
+  spectrometerSettingsFrame.grid(column=0, row=0, sticky=tk.W+tk.E+tk.N)
   
   rowIndex = 0
   
@@ -357,7 +365,7 @@ def setupWindow():
   
   showDarkSpectrum = tk.Radiobutton(
     figureButtonFrame,
-    text='spekter v temi',
+    text='dark spectrum',
     value=0,
     variable=app['figureRadioButtons'],
     bg='#FFFFFF',
@@ -369,7 +377,7 @@ def setupWindow():
   
   showLightSpectrum = tk.Radiobutton(
     figureButtonFrame,
-    text='spekter luči',
+    text='light spectrum',
     value=1,
     variable=app['figureRadioButtons'],
     bg='#FFFFFF',
@@ -381,7 +389,7 @@ def setupWindow():
   
   showDiffSpectrum = tk.Radiobutton(
     figureButtonFrame,
-    text='razlika',
+    text='difference',
     value=2,
     variable=app['figureRadioButtons'],
     bg='#FFFFFF',
@@ -390,10 +398,10 @@ def setupWindow():
     command=showSpectrumClick
   )
   showDiffSpectrum.grid(column=3, row=0)
-  
+  """
   showIrradianceSpectrum = tk.Radiobutton(
     figureButtonFrame,
-    text='jakost svetlobnega toka',
+    text='irradiance',
     value=3,
     variable=app['figureRadioButtons'],
     bg='#FFFFFF',
@@ -402,7 +410,7 @@ def setupWindow():
     command=showSpectrumClick
   )
   showIrradianceSpectrum.grid(column=4, row=0)
-  
+  """
   app['window'].rowconfigure(2, weight=1)
  
   app['figureRadioButtons'].set(-1)
@@ -412,6 +420,7 @@ def setupWindow():
   spectrometer.connectToDevice()
   spectrometer.calculateWavelengths()
   
+  """
   # testing
   spFilename = '2_Philips_label_down_25cm_20ms_16sc_0boxc_eld_nlc-on_USB2F017011__2__07-44-28-452.txt'
   darkSpFilename = '2_Philips_label_down_25cm_20ms_16sc_0boxc_eld_nlc-dark_USB2F017011__0__07-42-11-201.txt'
@@ -420,6 +429,8 @@ def setupWindow():
   _data['darkSpectrum'] = readSpectrumFromFile(darkSpFilename)
   
   _s['integrationTime'] = 20000
+  """
+  
   
   app['window'].mainloop()
   

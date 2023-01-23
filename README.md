@@ -14,7 +14,7 @@ Run `simple_measure_gui.py` for GUI use.
 
 ### Screenshots
 
-
+![screenshot 1](docs/screen1.png)
 
 ### Function reference
 
@@ -22,3 +22,7 @@ Run `simple_measure_gui.py` for GUI use.
 
 ## Authorship
 Created by Peter Nadrah on 21/12/2022.
+
+## TODO
+- CLI interface
+- Irradiance measuring support.
